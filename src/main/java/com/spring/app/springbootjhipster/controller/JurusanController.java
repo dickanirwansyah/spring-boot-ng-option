@@ -4,6 +4,8 @@ import com.spring.app.springbootjhipster.entity.Jurusan;
 import com.spring.app.springbootjhipster.exception.NotFoundException;
 import com.spring.app.springbootjhipster.repository.JurusanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -49,6 +51,16 @@ public class JurusanController {
                     currentJurusan.setActive(jurusan.isActive());
                     return jurusanRepository.save(currentJurusan);
                 }).orElseThrow(() -> new NotFoundException("idjurusan : "+idjurusan+" not found"));
+    }
+
+    @PutMapping
+    public ResponseEntity<Jurusan> jurusanUpdate(@RequestBody Jurusan jurusan){
+        if (jurusan.getIdjurusan() == 0){
+            return new ResponseEntity<Jurusan>(HttpStatus.NOT_FOUND);
+        }
+        return Optional.ofNullable(jurusanRepository.save(jurusan))
+                .map(callbackJSON -> new ResponseEntity<>(callbackJSON, HttpStatus.OK))
+                .orElse(new ResponseEntity<Jurusan>(HttpStatus.BAD_REQUEST));
     }
 
     @PostMapping(value = "/deactive/{idjurusan}")

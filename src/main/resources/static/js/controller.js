@@ -1,10 +1,10 @@
 angular.module('HipsterApp').controller('HipsterCtrl', HipsterCtrl);
 angular.module('HipsterApp').controller('jurusanCtrl', jurusanCtrl);
-angular.module('HipsterApp').controller('mahasiswaCtrl', mahasiswaCtrl);
+//angular.module('HipsterApp').controller('mahasiswaCtrl', mahasiswaCtrl);
 
 HipsterCtrl.inject = ['$scope'];
 jurusanCtrl.inject = ['$scope', 'Jurusan'];
-mahasiswaCtrl.inject = ['$scope', 'Mahasiswa'];
+//mahasiswaCtrl.inject = ['$scope', 'Mahasiswa'];
 
 function HipsterCtrl($scope){
 
@@ -49,8 +49,8 @@ function jurusanCtrl($scope, Jurusan){
     }
 };
 
-function mahasiswaCtrl($scope, Mahasiswa){
+//function mahasiswaCtrl($scope, Mahasiswa){
 
-    $scope.mahasiswas = Mahasiswa.query();
-    $scope.message = 'Hallo Mahasiswa';
-};
+  //  $scope.mahasiswas = Mahasiswa.query();
+  //  $scope.message = 'Hallo Mahasiswa';
+//};

@@ -8,8 +8,7 @@ function Jurusan($resource){
 
     return $resource(resourceUrl, {}, {
         'update' : {
-            method: 'PUT'
+            method : 'PUT'
         }
     });
-
 }
